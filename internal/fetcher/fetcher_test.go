@@ -17,12 +17,10 @@ func TestFetchAndSave(t *testing.T) {
 
 	defer server.Close()
 
-	err := FetchAndSave(serverURL)
+	filename, err := FetchAndSave(serverURL)
 	if err != nil {
 		t.Errorf("FetchAndSave failed: %v", err)
 	}
-
-	filename := "OK.html"
 
 	// Check the file was created
 	_, err = os.Stat(filename)
