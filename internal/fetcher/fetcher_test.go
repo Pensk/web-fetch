@@ -5,6 +5,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"testing"
+	"time"
 )
 
 func TestFetchAndSave(t *testing.T) {
@@ -16,6 +17,8 @@ func TestFetchAndSave(t *testing.T) {
 	serverURL := server.URL + "/OK"
 
 	defer server.Close()
+
+	LastFetchedTime = make(map[string]time.Time)
 
 	filename, err := FetchAndSave(serverURL)
 	if err != nil {
